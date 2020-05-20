@@ -7,9 +7,12 @@
             <a href="{{ url_for('logout') }}">Logout</a>
         </div>
         <div class="loginbox">
-            <h1>Hello, {{ current_user.username }}! Select a room or create one</h1>
+            <h1>Hello, {{ current_user.username }}!</h1>
             <a href="{{ url_for('spaceinvaders') }}">
-                <button>Click here to play spaceinvaders</button>
+                <button id="spaceinvadersbutton">Click here to play spaceinvaders</button>
+            </a>
+            <a href="{{ url_for('leaderboard') }}">
+                <button id="leaderboardbutton">Show leaderboard</button>
             </a>
         </div>
     </body>

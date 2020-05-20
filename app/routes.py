@@ -65,3 +65,8 @@ def register():
 @login_required
 def spaceinvaders():
     return render_template('spaceinvaders.html', title='Spaceinvaders')
+
+@app.route('/leaderboard')
+@login_required
+def leaderboard():
+    return render_template('leaderboard.html', title='Leaderboard')

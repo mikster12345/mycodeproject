@@ -1,7 +1,21 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url(../assets/pic1.jpg);
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 #background {
     background-image: url('../assets/background.png');
     height: 800px;
     width: 1200px;
+    border-radius: 5%;
 }
 
 #hero {
@@ -10,7 +24,7 @@
     width: 50px;
     position: absolute;
     top: 700px;
-    left: 550px;
+    left: 800px;
 }
 
 .enemy {
@@ -38,3 +52,4 @@
     width: 1200px;
     position: absolute;
 }
+
