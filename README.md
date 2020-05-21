@@ -3,6 +3,10 @@ ABOUT This Repo is a Website with a Java Script Game. After creating an account 
 HOW TO INSTALL/RUN
 1.Clone the Repo
 
+2.Enter mycodeproject
+(In Terminal)
+-cd mycodeproject
+
 2.Create a Virtual Environment 
 (In Terminal)
 -virtualenv venv
