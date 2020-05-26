@@ -12,29 +12,35 @@
         <script>
             var hero = {
                 top: 700,
-                left: 550
+                left: 840
             };
 
             var missiles = [];
 
             var enemies = [
-                { left: 700, top: 100 },
-                { left: 940, top: 100 },
-                { left: 1040, top: 100 },
-                { left: 1140, top: 100 },
-                { left: 1240, top: 100 },
-                { left: 1340, top: 100 },
-                { left: 1440, top: 100 },
-                { left: 1540, top: 100 },
-                { left: 200, top: 175 },
-                { left: 300, top: 175 },
-                { left: 400, top: 175 },
-                { left: 500, top: 175 },
-                { left: 600, top: 175 },
-                { left: 700, top: 175 },
-                { left: 800, top: 175 },
-                { left: 900, top: 175 }
+                { left: 485, top: 100 },
+                { left: 585, top: 100 },
+                { left: 685, top: 100 },
+                { left: 785, top: 100 },
+                { left: 885, top: 100 },
+                { left: 985, top: 100 },
+                { left: 1085, top: 100 },
+                { left: 1185, top: 100 },
+                { left: 485, top: 175 },
+                { left: 585, top: 175 },
+                { left: 685, top: 175 },
+                { left: 785, top: 175 },
+                { left: 885, top: 175 },
+                { left: 985, top: 175 },
+                { left: 1085, top: 175 },
+                { left: 1185, top: 175 }
             ];
+
+            var score = 0;
+
+            var a = enemies.length;
+
+            var i = 0;
 
             document.onkeydown = function(e) {
 
@@ -69,7 +75,7 @@
 
             function moveMissiles() {
                 for( var missile =0; missile < missiles.length; missile = missile + 1 ){
-                    missiles[missile].top = missiles[missile].top - 5;
+                    missiles[missile].top = missiles[missile].top - 50;
                 }
             }
 
@@ -83,7 +89,22 @@
 
             function moveEnemies() {
                 for( var enemy =0; enemy < enemies.length; enemy = enemy + 1 ){
-                    enemies[enemy].top = enemies[enemy].top + 3;
+                    enemies[enemy].top = enemies[enemy].top + 2;
+                }
+            }
+            
+            function gameWin() {
+                if(score == a) {
+                    window.location = "/index";
+                    alert("YOU WIN");
+                }
+            }
+
+            function gameOver() {
+                i ++;
+                if (i == 300) {
+                    window.location = "/index";
+                    alert("YOU LOSE");
                 }
             }
 
@@ -98,7 +119,8 @@
                             (missiles[missile].left <= enemies[enemy].left + 50)
                         ){
                             enemies.splice(enemy, 1);
-                            missiles.splice(missile, 1)
+                            missiles.splice(missile, 1);
+                            score++;
                         }
                     }
                 }
@@ -111,6 +133,8 @@
                 drawEnemies();
                 moveEnemies();
                 collisionDetection();
+                gameWin();
+                gameOver();
             }
             gameLoop();
 
