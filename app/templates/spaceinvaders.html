@@ -126,10 +126,11 @@
             }
 
             function gameOver() {
-                for(u = 0; i < enemies.length; i++) {
-                    if (top >= 700) {
+                for(u = 0; u < enemies.length; u++) {
+                    if (enemies[u]["top"] >= 700) {
                         window.location = "/index";
                         alert("YOU LOSE");
+                        break;
                     }
                 }
             }
