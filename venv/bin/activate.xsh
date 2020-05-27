@@ -28,11 +28,7 @@ def _deactivate(args):
 _deactivate(["nondestructive"])
 aliases["deactivate"] = _deactivate
 
-<<<<<<< HEAD
 $VIRTUAL_ENV = r"/Users/mikabrues/card-game-31/venv"
-=======
-$VIRTUAL_ENV = r"/Users/mikabrues/experi/mycodeproject/venv"
->>>>>>> 734f7c9c567cb00a0d6cdd38ee88d1e2eeb135d6
 
 $_OLD_VIRTUAL_PATH = $PATH
 $PATH = $PATH[:]
