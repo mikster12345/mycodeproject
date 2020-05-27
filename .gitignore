@@ -1,4 +1,3 @@
-.idea
-venv
-app.db
+venv/
 flaskenv.
+app.db
