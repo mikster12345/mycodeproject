@@ -36,9 +36,28 @@
                 { left: 1185, top: 175 }
             ];
 
+            var secondEnemies = [
+                { left: 485, top: 100 },
+                { left: 585, top: 100 },
+                { left: 685, top: 100 },
+                { left: 785, top: 100 },
+                { left: 885, top: 100 },
+                { left: 985, top: 100 },
+                { left: 1085, top: 100 },
+                { left: 1185, top: 100 },
+                { left: 485, top: 175 },
+                { left: 585, top: 175 },
+                { left: 685, top: 175 },
+                { left: 785, top: 175 },
+                { left: 885, top: 175 },
+                { left: 985, top: 175 },
+                { left: 1085, top: 175 },
+                { left: 1185, top: 175 }
+            ]
+
             var score = 0;
 
-            var a = enemies.length;
+            var a = enemies.length + secondEnemies.length;
 
             var i = 0;
 
@@ -92,6 +111,12 @@
                     enemies[enemy].top = enemies[enemy].top + 2;
                 }
             }
+
+            function secondWave() {
+                if(enemies.length == 0) {
+                    enemies = secondEnemies;
+                }
+            }
             
             function gameWin() {
                 if(score == a) {
@@ -101,10 +126,11 @@
             }
 
             function gameOver() {
-                i ++;
-                if (i == 300) {
-                    window.location = "/index";
-                    alert("YOU LOSE");
+                for(u = 0; i < enemies.length; i++) {
+                    if (top >= 700) {
+                        window.location = "/index";
+                        alert("YOU LOSE");
+                    }
                 }
             }
 
@@ -133,6 +159,7 @@
                 drawEnemies();
                 moveEnemies();
                 collisionDetection();
+                secondWave();
                 gameWin();
                 gameOver();
             }

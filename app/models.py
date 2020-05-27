@@ -24,6 +24,10 @@ class User(UserMixin, db.Model):
 def load_user(id):
     return User.query.get(int(id))
 
+class HighScore(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    hscore = db.Column(db.Integer, index=True, unique=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
