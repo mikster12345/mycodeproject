@@ -46,7 +46,11 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
+<<<<<<< HEAD
 VIRTUAL_ENV="/Users/mikabrues/card-game-31/venv"
+=======
+VIRTUAL_ENV="/Users/mikabrues/experi/mycodeproject/venv"
+>>>>>>> 734f7c9c567cb00a0d6cdd38ee88d1e2eeb135d6
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

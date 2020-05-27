@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #!/Users/mikabrues/card-game-31/venv/bin/python3.7
+=======
+#!/Users/mikabrues/experi/mycodeproject/venv/bin/python3.7
+>>>>>>> 734f7c9c567cb00a0d6cdd38ee88d1e2eeb135d6
 # -*- coding: utf-8 -*-
 import re
 import sys
