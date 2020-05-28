@@ -1,4 +1,4 @@
-ABOUT This Repo is a Website with a Java Script Game. After creating an account you are able to login and play spaceinvaders viewing your highscores compared to others. 
+ABOUT This Repo is a Website with a Java Script Game. After creating an account you are able to login and play spaceinvaders viewing your highscores. 
 
 HOW TO INSTALL/RUN
 1.Clone the Repo

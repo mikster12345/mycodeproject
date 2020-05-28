@@ -8,6 +8,7 @@
             <div id="hero"></div>
             <div id="missiles"></div>
             <div id="enemies"></div>
+            <h1> "score" </h1>
         </div>
         <script>
             var hero = {
@@ -126,6 +127,7 @@
             
             function gameWin() {
                 if(score == a) {
+                    safeLeaderboard();
                     window.location = "/index";
                     alert("YOU WIN");
                 }
@@ -134,11 +136,16 @@
             function gameOver() {
                 for(u = 0; u < enemies.length; u++) {
                     if (enemies[u]["top"] >= 700) {
+                        safeLeaderboard();
                         window.location = "/index";
                         alert("YOU LOSE");
                         break;
                     }
                 }
+            }
+
+            function safeLeaderboard () {
+                var response = fetch("http://127.0.0.1:5000/leaderboard", {method:"POST", body: JSON.stringify({score}), headers:{"Content-Type": "application/json"} });
             }
 
             function collisionDetection() {
@@ -171,6 +178,7 @@
                 gameOver();
             }
             gameLoop();
+
 
         </script>
     </body>

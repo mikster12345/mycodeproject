@@ -1,9 +1,9 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, Response
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
-from app.models import User
+from app.models import User, Score
 
 
 @app.route('/')
@@ -36,7 +36,6 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -56,7 +55,16 @@ def register():
 def spaceinvaders():
     return render_template('spaceinvaders.html', title='Spaceinvaders')
 
-@app.route('/leaderboard')
+@app.route('/leaderboard', methods=['GET', 'POST'])
 @login_required
 def leaderboard():
-    return render_template('leaderboard.html', title='Leaderboard')
+    if request.method == 'POST':
+        scoreNumber = request.get_json()["score"]
+        score = Score(body = scoreNumber, user_id = current_user.get_id())
+        db.session.add(score)
+        db.session.commit()
+        return Response(status= 200)
+    else:
+        score = Score.query.filter_by(user_id=current_user.get_id()).order_by(Score.body.desc()).all()
+        print(score)
+        return render_template('leaderboard.html', title='Leaderboard', score= score)

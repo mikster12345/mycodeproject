@@ -26,11 +26,11 @@ def load_user(id):
 
 class Score(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    body = db.Column(db.Integer)
+    body = db.Column(db.Integer, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
-        return '<Highscore {}>'.format(self.body)
+        return '<Score {}>'.format(self.body)
 
 
 

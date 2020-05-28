@@ -7,7 +7,10 @@
             <a href="{{ url_for('logout') }}">Logout</a>
         </div>
         <div class="leaderboard">
-            <h1>Scoreboard</h1>
+            <h1>{{ current_user.username }}s Highscores</h1>
+            {% for sco in score %}
+            <p>{{ sco.body }}</p>
+            {% endfor %}
         </div>
         <p></p>
     </body>
