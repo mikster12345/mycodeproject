@@ -24,7 +24,15 @@ class User(UserMixin, db.Model):
 def load_user(id):
     return User.query.get(int(id))
 
-class HighScore(db.Model):
+class Score(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    hscore = db.Column(db.Integer, index=True, unique=True)
+    body = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def __repr__(self):
+        return '<Highscore {}>'.format(self.body)
+
+
+
+
+
