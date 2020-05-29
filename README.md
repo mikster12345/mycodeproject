@@ -23,4 +23,4 @@ HOW TO INSTALL/RUN
 -flask db migrate
 -flask db upgrade
 
-6.Run the server by typing "flask run" in the terminal window and enter the website by entering "http://127.0.0.1:5000/" in your local browser
+6.Run the server by typing "flask run" in the terminal window and enter the website by entering "http://127.0.0.1:5000/" in your local browser(chrome recommended)

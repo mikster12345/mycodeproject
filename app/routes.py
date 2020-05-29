@@ -65,6 +65,5 @@ def leaderboard():
         db.session.commit()
         return Response(status= 200)
     else:
-        score = Score.query.filter_by(user_id=current_user.get_id()).order_by(Score.body.desc()).all()
-        print(score)
+        score = Score.query.filter_by(user_id=current_user.get_id()).order_by(Score.body.desc()).limit(10).all()
         return render_template('leaderboard.html', title='Leaderboard', score= score)
