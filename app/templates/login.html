@@ -1,9 +1,9 @@
 <html>
     <head>
         {% if title %}
-        <title>{{ title }} - Card-Game-31</title>
+        <title>{{ title }} - SpaceInvaders</title>
         {% else %}
-        <title>Welcome to Card-Game-31</title>
+        <title>Welcome to SpaceInvaders</title>
         {% endif %}
     </head>
     <link rel="stylesheet" type="text/css" href="../static/styles/login.css">
@@ -28,7 +28,6 @@
         {% endwith %}
         {% block content %}
         <div class="loginbox">
-            <img src="../static/assets/avatar.png" class="avatar">
             <h1>Sign In</h1>
             <form action="" method="post" novalidate>
                 {{ form.hidden_tag() }}

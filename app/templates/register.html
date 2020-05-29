@@ -1,9 +1,9 @@
 <html>
     <head>
         {% if title %}
-        <title>{{ title }} - Microblog</title>
+        <title>{{ title }} - Spaceinvaders</title>
         {% else %}
-        <title>Welcome to Microblog</title>
+        <title>Welcome to Spaceinvaders</title>
         {% endif %}
     </head>
     <link rel="stylesheet" type="text/css" href="../static/styles/register.css">
@@ -28,7 +28,6 @@
         {% endwith %}
         {% block content %}
         <div class="loginbox">
-            <img src="../static/assets/avatar.png" class="avatar">
             <h1>Register</h1>
             <form action="" method="post">
                 {{ form.hidden_tag() }}
