@@ -17,27 +17,27 @@ body{
     left: 840px;
 }
 
-.enemy {
+.alien {
     background-image: url('../assets/enemy.png');
     height: 50px;
     width: 50px;
     position: absolute;
 }
 
-#missiles {
+#rockets {
     height: 800px;
     width: 1200px;
     position: absolute;
 }
 
-.missile {
+.rocket {
     background-image: url(../assets/missile1.png);
     height: 16px;
     width: 10px;
     position: absolute;
 }
 
-#enemys {
+#aliens {
     height: 800px;
     width: 1200px;
     position: absolute;

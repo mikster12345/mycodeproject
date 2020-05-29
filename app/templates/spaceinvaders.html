@@ -6,8 +6,8 @@
         <link rel="stylesheet" type="text/css" href="../static/styles/spaceinvaders.css">
         <div id="background">
             <div id="hero"></div>
-            <div id="missiles"></div>
-            <div id="enemies"></div>
+            <div id="rockets"></div>
+            <div id="aliens"></div>
             <h1> "score" </h1>
         </div>
         <script>
@@ -16,9 +16,9 @@
                 left: 840
             };
 
-            var missiles = [];
+            var rockets = [];
 
-            var enemies = [
+            var aliens = [
                 { left: 485, top: 100 },
                 { left: 585, top: 100 },
                 { left: 685, top: 100 },
@@ -37,7 +37,7 @@
                 { left: 1185, top: 175 },
             ];
 
-            var secondEnemies = [
+            var secondAliens = [
                 { left: 175, top: 50 },
                 { left: 425, top: 50 },
                 { left: 675, top: 50 },
@@ -64,7 +64,7 @@
 
             var score = 0;
 
-            var a = enemies.length + secondEnemies.length;
+            var a = aliens.length + secondAliens.length;
 
             var i = 0;
 
@@ -79,11 +79,11 @@
                     moveHero()
                 }
                 else if (e.keyCode === 32) {
-                    missiles.push({
+                    rockets.push({
                         left: hero.left + 15,
                         top: hero.top
                     })
-                    drawMissiles()
+                    drawRockets()
                 }
             }
 
@@ -91,37 +91,37 @@
                 document.getElementById('hero').style.left = hero.left + "px";
             }
 
-            function drawMissiles() {
-                document.getElementById('missiles').innerHTML = "";
-                for( var missile =0; missile < missiles.length; missile = missile + 1 ){
-                    document.getElementById('missiles').innerHTML += 
-                    `<div class='missile' style='left:${missiles[missile].left}px; top:${missiles[missile].top}px;'></div>`;
+            function drawRockets() {
+                document.getElementById('rockets').innerHTML = "";
+                for( var rocket =0; rocket < rockets.length; rocket = rocket + 1 ){
+                    document.getElementById('rockets').innerHTML += 
+                    `<div class='rocket' style='left:${rockets[rocket].left}px; top:${rockets[rocket].top}px;'></div>`;
                 }
             }
 
-            function moveMissiles() {
-                for( var missile =0; missile < missiles.length; missile = missile + 1 ){
-                    missiles[missile].top = missiles[missile].top - 50;
+            function moveRockets() {
+                for( var rocket =0; rocket < rockets.length; rocket = rocket + 1 ){
+                    rockets[rocket].top = rockets[rocket].top - 50;
                 }
             }
 
-            function drawEnemies() {
-                document.getElementById('enemies').innerHTML = "";
-                for( var enemy =0; enemy < enemies.length; enemy = enemy + 1 ){
-                    document.getElementById('enemies').innerHTML += 
-                    `<div class='enemy' style='left:${enemies[enemy].left}px; top:${enemies[enemy].top}px;'></div>`;
+            function drawAliens() {
+                document.getElementById('aliens').innerHTML = "";
+                for( var alien =0; alien < aliens.length; alien = alien + 1 ){
+                    document.getElementById('aliens').innerHTML += 
+                    `<div class='alien' style='left:${aliens[alien].left}px; top:${aliens[alien].top}px;'></div>`;
                 }
             }
 
-            function moveEnemies() {
-                for( var enemy =0; enemy < enemies.length; enemy = enemy + 1 ){
-                    enemies[enemy].top = enemies[enemy].top + 2;
+            function moveAliens() {
+                for( var alien =0; alien < aliens.length; alien = alien + 1 ){
+                    aliens[alien].top = aliens[alien].top + 2;
                 }
             }
 
             function secondWave() {
-                if(enemies.length == 0) {
-                    enemies = secondEnemies;
+                if(aliens.length == 0) {
+                    aliens = secondAliens;
                 }
             }
             
@@ -134,8 +134,8 @@
             }
 
             function gameOver() {
-                for(u = 0; u < enemies.length; u++) {
-                    if (enemies[u]["top"] >= 700) {
+                for(u = 0; u < aliens.length; u++) {
+                    if (aliens[u]["top"] >= 700) {
                         safeLeaderboard();
                         window.location = "/index";
                         alert("YOU LOSE");
@@ -149,17 +149,17 @@
             }
 
             function collisionDetection() {
-                for( var enemy =0; enemy < enemies.length; enemy = enemy + 1 ){
-                    for( var missile =0; missile < missiles.length; missile = missile + 1 ){
-                        console.log("enemies[enemy].top", enemies[enemy].top);
+                for( var alien =0; alien < aliens.length; alien = alien + 1 ){
+                    for( var rocket =0; rocket < rockets.length; rocket = rocket + 1 ){
+                        console.log("aliens[alien].top", aliens[alien].top);
                         if (
-                            (missiles[missile].top <= enemies[enemy].top + 50) &&
-                            (missiles[missile].top >= enemies[enemy].top) &&
-                            (missiles[missile].left >= enemies[enemy].left) &&
-                            (missiles[missile].left <= enemies[enemy].left + 50)
+                            (rockets[rocket].top <= aliens[alien].top + 50) &&
+                            (rockets[rocket].top >= aliens[alien].top) &&
+                            (rockets[rocket].left >= aliens[alien].left) &&
+                            (rockets[rocket].left <= aliens[alien].left + 50)
                         ){
-                            enemies.splice(enemy, 1);
-                            missiles.splice(missile, 1);
+                            aliens.splice(alien, 1);
+                            rockets.splice(rocket, 1);
                             score++;
                         }
                     }
@@ -168,10 +168,10 @@
 
             function gameLoop(){
                 setTimeout(gameLoop , 50)
-                moveMissiles();
-                drawMissiles();
-                drawEnemies();
-                moveEnemies();
+                moveRockets();
+                drawRockets();
+                drawAliens();
+                moveAliens();
                 collisionDetection();
                 secondWave();
                 gameWin();
